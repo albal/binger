@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		611FE6FC2FE9862A008FEF24 /* BingWallpaperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE6FB2FE9862A008FEF24 /* BingWallpaperService.swift */; };
+		611FE6FE2FE9863B008FEF24 /* WallpaperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE6FD2FE9863B008FEF24 /* WallpaperManager.swift */; };
+		611FE7002FE9880E008FEF24 /* WallpaperCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE6FF2FE9880E008FEF24 /* WallpaperCoordinator.swift */; };
+		611FE7022FE9881C008FEF24 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7012FE9881B008FEF24 /* LoginItemManager.swift */; };
+		611FE7042FE9882A008FEF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7032FE9882A008FEF24 /* AppDelegate.swift */; };
+		611FE7062FE98861008FEF24 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7052FE98861008FEF24 /* MenuBarContent.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		611FE6DF2FE9818D008FEF24 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +36,12 @@
 		611FE6CF2FE9818C008FEF24 /* binger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = binger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		611FE6DE2FE9818D008FEF24 /* bingerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bingerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		611FE6E82FE9818D008FEF24 /* bingerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bingerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		611FE6FB2FE9862A008FEF24 /* BingWallpaperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingWallpaperService.swift; sourceTree = "<group>"; };
+		611FE6FD2FE9863B008FEF24 /* WallpaperManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperManager.swift; sourceTree = "<group>"; };
+		611FE6FF2FE9880E008FEF24 /* WallpaperCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperCoordinator.swift; sourceTree = "<group>"; };
+		611FE7012FE9881B008FEF24 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
+		611FE7032FE9882A008FEF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		611FE7052FE98861008FEF24 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +94,12 @@
 				611FE6E12FE9818D008FEF24 /* bingerTests */,
 				611FE6EB2FE9818D008FEF24 /* bingerUITests */,
 				611FE6D02FE9818C008FEF24 /* Products */,
+				611FE6FB2FE9862A008FEF24 /* BingWallpaperService.swift */,
+				611FE6FD2FE9863B008FEF24 /* WallpaperManager.swift */,
+				611FE6FF2FE9880E008FEF24 /* WallpaperCoordinator.swift */,
+				611FE7012FE9881B008FEF24 /* LoginItemManager.swift */,
+				611FE7032FE9882A008FEF24 /* AppDelegate.swift */,
+				611FE7052FE98861008FEF24 /* MenuBarContent.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +257,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611FE6FC2FE9862A008FEF24 /* BingWallpaperService.swift in Sources */,
+				611FE6FE2FE9863B008FEF24 /* WallpaperManager.swift in Sources */,
+				611FE7062FE98861008FEF24 /* MenuBarContent.swift in Sources */,
+				611FE7042FE9882A008FEF24 /* AppDelegate.swift in Sources */,
+				611FE7022FE9881C008FEF24 /* LoginItemManager.swift in Sources */,
+				611FE7002FE9880E008FEF24 /* WallpaperCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +423,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -426,7 +463,17 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

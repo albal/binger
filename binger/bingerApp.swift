@@ -2,31 +2,30 @@
 //  bingerApp.swift
 //  binger
 //
-//  Created by Al West on 22/06/2026.
-//
 
 import SwiftUI
-import SwiftData
 
 @main
 struct bingerApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    @State private var coordinator = WallpaperCoordinator()
+    @State private var loginItem = LoginItemManager()
+    @Environment(\.openWindow) private var openWindow
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("Binger", systemImage: "photo.on.rectangle.angled") {
+            MenuBarContent(
+                coordinator: coordinator,
+                loginItem: loginItem,
+                openWindow: { openWindow(id: "main") }
+            )
         }
-        .modelContainer(sharedModelContainer)
+
+        Window("Binger", id: "main") {
+            ContentView()
+                .environment(coordinator)
+                .environment(loginItem)
+        }
+        .windowResizability(.contentMinSize)
     }
 }
