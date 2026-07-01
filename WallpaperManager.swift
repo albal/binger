@@ -21,7 +21,7 @@ enum WallpaperError: Error, LocalizedError {
 struct WallpaperManager {
     func apply(_ image: BingImage) async throws -> URL {
         let localURL = try await download(image)
-        try setOnAllScreens(localURL)
+        try await setOnAllScreens(localURL)
         return localURL
     }
 
