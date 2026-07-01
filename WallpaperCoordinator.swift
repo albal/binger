@@ -24,6 +24,7 @@ final class WallpaperCoordinator {
     private let service = BingWallpaperService()
     private let manager = WallpaperManager()
     private let defaults = UserDefaults.standard
+    private let cache = HistoryCache()
     private var scheduler: Task<Void, Never>?
 
     private static let displayLimit = 30
@@ -35,7 +36,7 @@ final class WallpaperCoordinator {
 
     init() {
         lastAppliedDate = defaults.string(forKey: DefaultsKey.lastApplied)
-        history = HistoryCache.load().sorted { $0.startDate > $1.startDate }
+        history = cache.load().sorted { $0.startDate > $1.startDate }
         startBackgroundChecks()
     }
 
@@ -123,15 +124,14 @@ final class WallpaperCoordinator {
     }
 
     private func mergeIntoHistory(_ fetched: [BingImage]) {
-        var byDate: [String: BingImage] = [:]
-        for image in history { byDate[image.startDate] = image }
-        for image in fetched { byDate[image.startDate] = image }
-        let merged = byDate.values.sorted { $0.startDate > $1.startDate }
+        let merged = WallpaperLogic.mergeHistory(
+            existing: history,
+            fetched: fetched,
+            limit: Self.cacheLimit
+        )
+        cache.save(merged)
         history = Array(merged.prefix(Self.displayLimit))
-        HistoryCache.save(Array(merged.prefix(Self.cacheLimit)))
-        if selectedIndex >= history.count {
-            selectedIndex = max(0, history.count - 1)
-        }
+        selectedIndex = WallpaperLogic.clampedSelection(selectedIndex, count: history.count)
     }
 
     func startBackgroundChecks() {
@@ -150,7 +150,10 @@ final class WallpaperCoordinator {
     private func runScheduleLoop() async {
         await checkForNewAndApply()
         while !Task.isCancelled {
-            let target = nextScheduledDate(from: Date())
+            let target = WallpaperLogic.nextScheduledDate(
+                from: Date(),
+                randomMinute: Int.random(in: 0..<60)
+            )
             nextCheck = target
             let delay = target.timeIntervalSinceNow
             if delay > 0 {
@@ -163,43 +166,5 @@ final class WallpaperCoordinator {
             if Task.isCancelled { return }
             await checkForNewAndApply()
         }
-    }
-
-    private func nextScheduledDate(from now: Date) -> Date {
-        let calendar = Calendar.current
-        let topOfNextHour = calendar.nextDate(
-            after: now,
-            matching: DateComponents(minute: 0, second: 0),
-            matchingPolicy: .nextTime
-        ) ?? now.addingTimeInterval(3600)
-        let randomMinute = Int.random(in: 0..<60)
-        return topOfNextHour.addingTimeInterval(TimeInterval(randomMinute * 60))
-    }
-}
-
-private enum HistoryCache {
-    private static let filename = "history.json"
-
-    private static var fileURL: URL? {
-        let fm = FileManager.default
-        guard let support = try? fm.url(
-            for: .applicationSupportDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: true
-        ) else { return nil }
-        let folder = support.appendingPathComponent("Binger", isDirectory: true)
-        try? fm.createDirectory(at: folder, withIntermediateDirectories: true)
-        return folder.appendingPathComponent(filename)
-    }
-
-    static func load() -> [BingImage] {
-        guard let url = fileURL, let data = try? Data(contentsOf: url) else { return [] }
-        return (try? JSONDecoder().decode([BingImage].self, from: data)) ?? []
-    }
-
-    static func save(_ images: [BingImage]) {
-        guard let url = fileURL, let data = try? JSONEncoder().encode(images) else { return }
-        try? data.write(to: url, options: .atomic)
     }
 }

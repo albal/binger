@@ -31,20 +31,29 @@ struct WallpaperManager {
             throw WallpaperError.downloadFailed
         }
 
-        let destination = try wallpaperDestination(for: image)
+        let destination = try Self.wallpaperDestination(for: image)
         try? FileManager.default.removeItem(at: destination)
         try FileManager.default.moveItem(at: tempURL, to: destination)
         return destination
     }
 
-    private func wallpaperDestination(for image: BingImage) throws -> URL {
+    /// Computes the on-disk destination for a wallpaper. `baseDirectory` is injectable for testing.
+    static func wallpaperDestination(
+        for image: BingImage,
+        baseDirectory: URL? = nil
+    ) throws -> URL {
         let fm = FileManager.default
-        let support = try fm.url(
-            for: .applicationSupportDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: true
-        )
+        let support: URL
+        if let baseDirectory {
+            support = baseDirectory
+        } else {
+            support = try fm.url(
+                for: .applicationSupportDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            )
+        }
         let folder = support.appendingPathComponent("Binger", isDirectory: true)
         try fm.createDirectory(at: folder, withIntermediateDirectories: true)
         return folder.appendingPathComponent("bing-\(image.startDate).jpg")

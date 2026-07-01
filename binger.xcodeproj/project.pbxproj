@@ -13,6 +13,8 @@
 		611FE7022FE9881C008FEF24 /* LoginItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7012FE9881B008FEF24 /* LoginItemManager.swift */; };
 		611FE7042FE9882A008FEF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7032FE9882A008FEF24 /* AppDelegate.swift */; };
 		611FE7062FE98861008FEF24 /* MenuBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611FE7052FE98861008FEF24 /* MenuBarContent.swift */; };
+		61EC968C2FF580FE00379275 /* WallpaperLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EC968B2FF580FE00379275 /* WallpaperLogic.swift */; };
+		61EC968E2FF5810600379275 /* HistoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EC968D2FF5810600379275 /* HistoryCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		611FE7012FE9881B008FEF24 /* LoginItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginItemManager.swift; sourceTree = "<group>"; };
 		611FE7032FE9882A008FEF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		611FE7052FE98861008FEF24 /* MenuBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContent.swift; sourceTree = "<group>"; };
+		61EC968B2FF580FE00379275 /* WallpaperLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperLogic.swift; sourceTree = "<group>"; };
+		61EC968D2FF5810600379275 /* HistoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -100,6 +104,8 @@
 				611FE7012FE9881B008FEF24 /* LoginItemManager.swift */,
 				611FE7032FE9882A008FEF24 /* AppDelegate.swift */,
 				611FE7052FE98861008FEF24 /* MenuBarContent.swift */,
+				61EC968B2FF580FE00379275 /* WallpaperLogic.swift */,
+				61EC968D2FF5810600379275 /* HistoryCache.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,11 +264,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				611FE6FC2FE9862A008FEF24 /* BingWallpaperService.swift in Sources */,
+				61EC968E2FF5810600379275 /* HistoryCache.swift in Sources */,
 				611FE6FE2FE9863B008FEF24 /* WallpaperManager.swift in Sources */,
 				611FE7062FE98861008FEF24 /* MenuBarContent.swift in Sources */,
 				611FE7042FE9882A008FEF24 /* AppDelegate.swift in Sources */,
 				611FE7022FE9881C008FEF24 /* LoginItemManager.swift in Sources */,
 				611FE7002FE9880E008FEF24 /* WallpaperCoordinator.swift in Sources */,
+				61EC968C2FF580FE00379275 /* WallpaperLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
